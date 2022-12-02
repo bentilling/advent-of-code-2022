@@ -1,5 +1,5 @@
 fun main() {
-    val calorieSums = getCalorieSums(readInput("elf-calories")).sortedDescending()
+    val calorieSums = getCalorieSums(readInput("day1/elf-calories")).sortedDescending()
     println("task1: ${calorieSums.first()}")
     println("task2: ${calorieSums.slice(0..2).sum()}")
 }
@@ -17,5 +17,3 @@ private fun getCalorieSums(calorieList: List<String>): List<Int> {
     }
     return calorieSums
 }
-
-//[68467, 68143, 66810]

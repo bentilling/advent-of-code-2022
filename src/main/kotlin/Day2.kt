@@ -25,134 +25,97 @@ private fun getStrategies(input: List<String>,  taskNumber: Int): List<Pair<Move
             val neededMove =  opponentMove.getMoveForResult(convertToResult(splitParts[1]))
             Pair(opponentMove, neededMove)
         }
-
     }
 }
 
 private fun convertToMove(move: String): Move {
-    if (move == "A" || move == "X") {
-        return Move.ROCK
+    return when (move) {
+        "X","A" -> Move.ROCK
+        "Y","B" -> Move.PAPER
+        "Z","C" -> Move.SCISSORS
+        else -> throw Exception("Invalid Move")
     }
-    if (move == "B" || move == "Y") {
-        return Move.PAPER
-    }
-    if (move == "C" || move == "Z") {
-        return Move.SCISSORS
-    }
-
-    throw Exception("Invalid move")
 }
 
 private fun convertToResult(move: String): Result {
-    if (move == "X") {
-        return Result.LOSE
+    return when (move) {
+        "X" -> Result.LOSE
+        "Y" -> Result.DRAW
+        "Z" -> Result.WIN
+        else -> throw Exception("Invalid Result")
     }
-    if (move == "Y") {
-        return Result.DRAW
-    }
-    if (move == "Z") {
-        return Result.WIN
-    }
-
-    throw Exception("Invalid Result")
 }
 
 enum class Result {
     WIN {
-        override fun getScoreForResult(): Int {
-            return 6
-        }
+        override fun getScoreForResult() = 6
     },
     DRAW {
-        override fun getScoreForResult(): Int {
-            return 3
-        }
+        override fun getScoreForResult() = 3
     },
     LOSE {
-        override fun getScoreForResult(): Int {
-            return 0
-        }
+        override fun getScoreForResult() = 0
     };
-
     abstract fun getScoreForResult(): Int
 }
 
 enum class Move {
     ROCK {
-        override fun getScoreForMove(): Int {
-            return 1
-        }
+        override fun getScoreForMove() = 1
 
         override fun getResultAgainst(opponentMove: Move): Result {
-            if (opponentMove == PAPER) {
-                return  Result.LOSE
+            return when (opponentMove) {
+                PAPER -> Result.LOSE
+                SCISSORS -> Result.WIN
+                else -> Result.DRAW
             }
-            if (opponentMove == SCISSORS) {
-                return Result.WIN
-            }
-            return Result.DRAW
         }
 
         override fun getMoveForResult(neededResult: Result): Move {
-            if (neededResult == Result.WIN) {
-                return PAPER
+            return when (neededResult) {
+                Result.WIN -> PAPER
+                Result.DRAW -> ROCK
+                else -> SCISSORS
             }
-            if (neededResult == Result.DRAW) {
-                return ROCK
-            }
-            return SCISSORS
         }
     },
     PAPER {
-        override fun getScoreForMove(): Int {
-            return 2
-        }
+        override fun getScoreForMove() = 2
 
         override fun getResultAgainst(opponentMove: Move): Result {
-            if (opponentMove == SCISSORS) {
-                return  Result.LOSE
+            return when (opponentMove) {
+                SCISSORS -> Result.LOSE
+                ROCK -> Result.WIN
+                else -> Result.DRAW
             }
-            if (opponentMove == ROCK) {
-                return Result.WIN
-            }
-            return Result.DRAW
         }
 
         override fun getMoveForResult(neededResult: Result): Move {
-            if (neededResult == Result.WIN) {
-                return SCISSORS
+            return when (neededResult) {
+                Result.WIN -> SCISSORS
+                Result.DRAW -> PAPER
+                else -> ROCK
             }
-            if (neededResult == Result.DRAW) {
-                return PAPER
-            }
-            return ROCK
         }
     },
     SCISSORS {
-        override fun getScoreForMove(): Int {
-            return 3
-        }
+        override fun getScoreForMove() = 3
 
         override fun getResultAgainst(opponentMove: Move): Result {
-            if (opponentMove == ROCK) {
-                return  Result.LOSE
+            return when (opponentMove) {
+                ROCK -> Result.LOSE
+                PAPER -> Result.WIN
+                else -> Result.DRAW
             }
-            if (opponentMove == PAPER) {
-                return Result.WIN
-            }
-            return Result.DRAW
         }
 
         override fun getMoveForResult(neededResult: Result): Move {
-            if (neededResult == Result.WIN) {
-                return ROCK
+            return when (neededResult) {
+                Result.WIN -> ROCK
+                Result.DRAW -> SCISSORS
+                else -> PAPER
             }
-            if (neededResult == Result.DRAW) {
-                return SCISSORS
-            }
-            return PAPER
         }
-
     };
     abstract fun getScoreForMove(): Int
     abstract fun getResultAgainst(opponentMove: Move): Result
