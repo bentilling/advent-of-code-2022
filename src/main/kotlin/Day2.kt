@@ -1,5 +1,5 @@
 fun main() {
-    val input = readInput("day2/rock-paper-scissors")
+    val input = readInputAsList("day2/rock-paper-scissors")
     val strategiesT1 = getStrategies(input, 1)
     println(getScores(strategiesT1).sum())
     val strategiesT2 = getStrategies(input, 2)

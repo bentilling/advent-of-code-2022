@@ -9,7 +9,7 @@ const val BASE_PRIORITY_LOWERCASE = 1
 const val BASE_PRIORITY_UPPERCASE = 27
 
 fun main () {
-    val rucksack = readInput("day3/rucksack")
+    val rucksack = readInputAsList("day3/rucksack")
 //    val wrongItems = getWrongItemsTask1(rucksack)
 //    println(getPriorities(wrongItems).sum())
     val groupItems = getMatchingItemTask2(rucksack)

@@ -1,13 +1,5 @@
 fun main() {
     val (stacks, instructions) = processInput("rearrangement")
-//    println("-----Task1-----")
-//    println("-----Before-----")
-//    stacks.forEach { println(it) }
-//    instructions.forEach { println(it) }
-//    println("-----After-----")
-//    runInstructionsTask1(stacks, instructions)
-//    stacks.forEach { println(it) }
-//    print(topOfStacks(stacks))
     println("-----Task2-----")
     println("-----Before-----")
     stacks.forEach { println(it) }
@@ -47,7 +39,7 @@ fun moveItems(numberOfTimes: Int, oldStack: ArrayDeque<Char>, newStack: ArrayDeq
 }
 
 fun processInput(fileName: String): Pair<Array<ArrayDeque<Char>>, List<Instruction>> {
-    val input = readInput("day5/$fileName")
+    val input = readInputAsList("day5/$fileName")
     var largestStackHeight = 0
     var numberOfStacks = 0
     input.forEachIndexed { index, s ->
@@ -65,7 +57,6 @@ fun processInput(fileName: String): Pair<Array<ArrayDeque<Char>>, List<Instructi
         }
     }
     val instructions = input.filterIndexed { index, _ -> index > largestStackHeight + 1 }.map { it ->
-//        val intInstructions = it.filter { c -> c.isDigit() }.map { it.toString().toInt() }
         println(it)
         val intInstructions = it.split("move ", " from ", " to ").filter { it.isNotEmpty() }.map { it.toInt() }
         println(intInstructions)

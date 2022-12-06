@@ -1,3 +1,7 @@
 import java.io.File
 
-fun readInput(name: String) = File("src/main/resources", "$name.txt").readLines()
+fun readInputAsList(name: String) =
+    File("src/main/resources", "$name.txt").readLines()
+
+fun readInputAsString(name: String) =
+    File("src/main/resources", "$name.txt").readText()

@@ -1,5 +1,5 @@
 fun main () {
-    val overlaps = getOverlaps(readInput("day4/overlaps"))
+    val overlaps = getOverlaps(readInputAsList("day4/overlaps"))
     val overlapCount = overlaps.count {
         it.first.containsRange(it.second) || it.second.containsRange(it.first)
     }
