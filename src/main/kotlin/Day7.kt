@@ -15,16 +15,16 @@ fun main() {
 
 }
 
-fun task1(totals: List<Int>): Int {
+private fun task1(totals: List<Int>): Int {
     return totals.filter { it <= 100000 }.sum()
 }
 
-fun task2(totals: List<Int>): Int {
+private fun task2(totals: List<Int>): Int {
     val neededSpace = 30000000 - (70000000 - totals.max())
     return totals.filter { it >= neededSpace }.min()
 }
 
-fun parseInputToNodes(input: List<String>): List<Directory> {
+private fun parseInputToNodes(input: List<String>): List<Directory> {
     val root = Directory("/", null, mutableListOf())
     val directories = mutableListOf(root)
     var currentDirectory = root
