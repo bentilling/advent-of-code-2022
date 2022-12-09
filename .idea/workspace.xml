@@ -37,14 +37,20 @@
     <option name="showModules" value="false" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/bentilling/Documents/GitHub/advent-of-code-2022/src/main/kotlin",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
-}</component>
-  <component name="RunManager" selected="Kotlin.Day8Kt">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Kotlin.Day9Kt">
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -64,13 +70,6 @@
     </configuration>
     <configuration name="Day1Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Day1Kt" />
-      <module name="advent-of-code-2022" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Day2Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Day2Kt" />
       <module name="advent-of-code-2022" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -97,13 +96,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day9Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Day9Kt" />
+      <module name="advent-of-code-2022" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.Day9Kt" />
         <item itemvalue="Kotlin.Day8Kt" />
         <item itemvalue="Kotlin.Day7Kt" />
         <item itemvalue="Kotlin.Day6Kt" />
         <item itemvalue="Kotlin.Day1Kt" />
-        <item itemvalue="Kotlin.Day2Kt" />
       </list>
     </recent_temporary>
   </component>

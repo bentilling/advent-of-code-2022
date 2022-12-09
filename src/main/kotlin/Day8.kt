@@ -130,10 +130,10 @@ private fun getScenicScore(row: Int, column: Int, input: List<String>): Int {
     return up * down * left * right
 }
 
-//private fun get2DArray(input: List<String>): Array<BooleanArray> {
-//    return Array(input.size) { BooleanArray(input[0].length) }
-//}
-//
+private fun get2DArray(input: List<String>): Array<BooleanArray> {
+    return Array(input.size) { BooleanArray(input[0].length) }
+}
+
 //class Forest(input: List<String>) {
 //    val forest = input.map { row -> row.map {it.toString().toInt()} }
 //
