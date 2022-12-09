@@ -1,82 +1,75 @@
+import kotlin.math.abs
+import kotlin.math.sign
+
 fun main() {
     val inputFile = "day9/knots"
     val input = readInputAsList(inputFile)
-    val inputTest = readInputAsList("$inputFile-test")
+    val inputTest = readInputAsList("$inputFile-test-1")
 
+    val task1Test = task1(inputTest)
+    println("task 1 test check: $task1Test")
     check(task1(inputTest) == 13)
-//    check(task2(inputTest) == 8)
+    val task2Test = task2(inputTest)
+    println("task 2 test check: $task2Test")
+    check(task2(inputTest) == 1)
 
-    println(task1(input))
-//    println(task2(input))
+    println("task1: ${task1(input)}")
+    println("task2: ${task2(input)}")
 
 }
 private fun task1(input: List<String>): Int {
+    return getTailForRopeSize(2,input)
+}
+
+private fun task2(input: List<String>): Int {
+    return getTailForRopeSize(10,input)
+}
+
+private fun getTailForRopeSize(size: Int, input: List<String>): Int {
     val visited = mutableSetOf(Coordinate())
-    val rope = Rope()
-    input.forEach {
-//        println(it)
-        val (direction, moves) = it.split(" ")
+
+    val coordinates = List(size) {Coordinate()}
+    input.forEach { s ->
+        val (direction, moves) = s.split(" ")
         repeat(moves.toInt()) {
-            visited.add(when (direction) {
-                "U" -> rope.moveUp()
-                "D" -> rope.moveDown()
-                "L" -> rope.moveLeft()
-                "R" -> rope.moveRight()
-                else -> error("Invalid direction")
-            })
-//            println(rope)
-//            println(visited)
+
+            coordinates[0].moveCoordinate(direction)
+
+            coordinates.forEachIndexed { index, coordinate ->
+                if (index != 0) {
+                    coordinates[index-1].followPositionForCoordinate(coordinate)
+                }
+            }
+            visited.add(coordinates[size-1].copy())
         }
     }
     return visited.size
 }
 
-private fun task2(input: List<String>): Int {
-    return 0
-}
-
 data class Coordinate(var x: Int = 0, var y: Int = 0) {
-
-    override fun toString(): String {
-        return "Coordinate(x=$x, y=$y)"
-    }
-}
-
-class Rope(val head: Coordinate = Coordinate(), val tail: Coordinate = Coordinate()) {
-    fun moveUp(): Coordinate {
-        if (tail.y < head.y) {
-            tail.y = head.y
-            tail.x = head.x
+    fun moveCoordinate(direction: String) {
+        when (direction) {
+            "U" -> this.y++
+            "D" -> this.y--
+            "L" -> this.x--
+            "R" -> this.x++
+            else -> error("Invalid direction")
         }
-        head.y++
-        return tail.copy()
-    }
-    fun moveDown(): Coordinate {
-        if (tail.y > head.y) {
-            tail.y = head.y
-            tail.x = head.x
-        }
-        head.y--
-        return tail.copy()
-    }
-    fun moveRight(): Coordinate {
-        if (tail.x < head.x) {
-            tail.x = head.x
-            tail.y = head.y
-        }
-        head.x++
-        return tail.copy()
-    }
-    fun moveLeft(): Coordinate {
-        if (tail.x > head.x) {
-            tail.x = head.x
-            tail.y = head.y
-        }
-        head.x--
-        return tail.copy()
     }
 
-    override fun toString(): String {
-        return "Rope(head=$head, tail=$tail)"
+    fun followPositionForCoordinate(coordinate: Coordinate) {
+        val x = this.x - coordinate.x
+        val y = this.y - coordinate.y
+
+        if (abs(x) > 1 && abs(y) > 1) {
+            coordinate.x += x.sign
+            coordinate.y += y.sign
+        } else if (abs(x) > 1) {
+            coordinate.x += x.sign
+            coordinate.y = this.y
+        } else if (abs(y) > 1) {
+            coordinate.y += y.sign
+            coordinate.x = this.x
+        }
     }
 }
